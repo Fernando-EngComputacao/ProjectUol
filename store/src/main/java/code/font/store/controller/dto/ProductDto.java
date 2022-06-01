@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+
 import code.font.store.modelo.Product;
 
 public class ProductDto {
@@ -29,7 +32,12 @@ public class ProductDto {
 	public static List<ProductDto> converter(List<Product> products){
 		return products.stream().map(ProductDto::new).collect(Collectors.toList());
 	}
-	
+	public static Page<ProductDto> converterPage(List<Product> products){
+		return new PageImpl<ProductDto>(products.stream().map(ProductDto::new).collect(Collectors.toList()));
+	}
+	public static Page<ProductDto> converterPage(Page<Product> products){
+		return new PageImpl<ProductDto>(products.stream().map(ProductDto::new).collect(Collectors.toList()));
+	}
 	
 	//Getters and Setters
 	public Integer getId() {

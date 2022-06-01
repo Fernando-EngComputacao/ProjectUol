@@ -1,9 +1,9 @@
 package code.font.store.controller.service;
 
-import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,9 +15,10 @@ import code.font.store.controller.form.ProductForm;
 public interface ProductService {
 	
 	//Get
-	List<ProductDto> list();
+	//Page<Product> list(Pageable page);
+	Page<ProductDto> list(int page, int size);
 	ResponseEntity<ProductDto> findById(@PathVariable Integer id);
-	List<ProductDto> search(String max_price, String min_price, String q);
+	Page<ProductDto> search(@PathVariable String max_price,@PathVariable String min_price,@PathVariable String q);
 	//Post
 	ResponseEntity<ProductDto> creat(@RequestBody @Valid ProductForm form, UriComponentsBuilder uriBuilder);
 	//Put

@@ -9,6 +9,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -43,12 +44,19 @@ public class ErrorValidationHandler {
 	public ExceptionResponse forbidden(){
 		ExceptionResponse erro = new ExceptionResponse(HttpStatus.FORBIDDEN.value(), "FORBIDDEN");
 		return erro;
-	}
+	} 
 	
-	@ResponseStatus(code = HttpStatus.NOT_FOUND)
+	@ResponseStatus(code = HttpStatus.NOT_FOUND) 
 	@ExceptionHandler(RuntimeException.class)
 	public ExceptionResponse notFound(){
 		ExceptionResponse erro = new ExceptionResponse(HttpStatus.NOT_FOUND.value(), "NOT FOUND");
+		return erro;
+	}
+	
+	@ResponseStatus(code = HttpStatus.METHOD_NOT_ALLOWED)
+	@ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+	public ExceptionResponse notAllowed() {
+		ExceptionResponse erro = new ExceptionResponse(HttpStatus.METHOD_NOT_ALLOWED.value(), "NOT ALLOWED");
 		return erro;
 	}
 	
