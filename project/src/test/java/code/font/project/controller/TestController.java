@@ -3,7 +3,6 @@ package code.font.project.controller;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import code.font.project.controller.service.ProductServiceImpl;
@@ -24,11 +23,11 @@ class TestController {
 	}
 	
 	//Get -> list()
-	@Test
-	void testNeedFindProductList() {
-		Mockito.when(controller.list(null)).thenReturn(null);
-		controller.list(null);
-	}
+//	@Test
+//	void testNeedFindProductList() {
+//		Mockito.when(controller.list(null)).thenReturn(null);
+//		controller.list(null);
+//	}
 	
 	//@Get{id} -> findById()
 	@Test

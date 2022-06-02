@@ -17,7 +17,10 @@ import code.font.project.model.Product;
 public class TestRepository {
 
 	@Autowired
-	private ProductRepository repository;	
+	private ProductRepository repository;
+	
+//	@Autowired
+//	private ProductService service;
 	
 	@Test
 	public void testFindAllElementsFromProduct() {
@@ -38,5 +41,5 @@ public class TestRepository {
 		Product product = repository.save(new Product("Café",1.2,"Goiano"));
 		assertNotNull(product);
 		assertTrue(product.getId() > 0);
-	}
+	}	
 }
