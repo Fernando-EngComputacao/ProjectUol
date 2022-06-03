@@ -34,7 +34,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Page<ProductDto> list(Pageable pageable) {
 		List<Product> products = productRepository.findAll(pageable).getContent();
-		return ProductDto.converter(products);
+		return ProductDto.converterPage(products);
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Page<ProductDto> search(String max_price, String min_price, String q) {
+	public List<ProductDto> search(String max_price, String min_price, String q) {
 		List<Product> products = productRepository.findMinMax(Double.parseDouble(max_price),
 				Double.parseDouble(min_price), Integer.parseInt(q));
 		return ProductDto.converter(products);

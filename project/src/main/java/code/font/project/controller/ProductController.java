@@ -1,5 +1,7 @@
 package code.font.project.controller;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
@@ -37,7 +39,7 @@ public class ProductController {
 	}
 
 	@GetMapping
-	public Page<ProductDto> list(@PageableDefault(page = 0, size = 7) Pageable pageable){
+	public Page<ProductDto> list(@PageableDefault(page = 0, size = 7, sort = "id") Pageable pageable){
 		return productService.list(pageable);
 	}
 	@GetMapping("/{id}")
@@ -45,10 +47,11 @@ public class ProductController {
 		return productService.findById(id);
 	}
 	@GetMapping("/search")
-	public Page<ProductDto> search(
+	public List<ProductDto> search(
 			@RequestParam(required = false, defaultValue = "10000") String max_price, 
 			@RequestParam(required = false, defaultValue = "0") String min_price, 
-			@RequestParam(required = false, defaultValue = "5") String q){
+			@RequestParam(required = false, defaultValue = "50") String q){
+			//@PageableDefault(page = 0, size = 7) Pageable pageable){ 
 			
 			return productService.search(max_price, min_price, q);	
 	}

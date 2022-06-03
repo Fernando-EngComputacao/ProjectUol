@@ -25,12 +25,12 @@ public class ProductDto {
 	}
 
 	//Methods
-	public static Page<ProductDto> converter(List<Product> product) {
+	public static Page<ProductDto> converterPage(List<Product> product) {
 		return new PageImpl<ProductDto>(product.stream().map(ProductDto::new).collect(Collectors.toList()));
 	}
-//	public static List<ProductDto> converter(List<Product> product) {
-//		return (product.stream().map(ProductDto::new).collect(Collectors.toList()));
-//	}
+	public static List<ProductDto> converter(List<Product> product) {
+		return (product.stream().map(ProductDto::new).collect(Collectors.toList()));
+	}
 	
 	//Getters and Setters
 	public Integer getId() {

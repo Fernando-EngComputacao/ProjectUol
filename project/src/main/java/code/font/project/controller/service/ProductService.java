@@ -1,5 +1,7 @@
 package code.font.project.controller.service;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.data.domain.Page;
@@ -17,7 +19,7 @@ public interface ProductService {
 	//Get
 	Page<ProductDto> list(Pageable pageable);
 	ResponseEntity<ProductDto> findById(@PathVariable Integer id);
-	Page<ProductDto> search(String max_price, String min_price, String q);
+	List<ProductDto> search(String max_price, String min_price, String q);
 	//Post
 	ResponseEntity<ProductDto> creat(@RequestBody @Valid ProductForm form, UriComponentsBuilder uriBuilder);
 	//Put
